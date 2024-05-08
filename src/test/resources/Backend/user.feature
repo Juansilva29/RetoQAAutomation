@@ -49,3 +49,13 @@ Feature: service user
     Given path 'api','users','2'
     When method delete
     Then status 204
+
+
+  Scenario: update non-existing user
+
+    * def rqUpdateUser = {"name": '#(updateName)',"job": '#(updateJob)'}
+
+    Given path 'api','users','100000000'
+    And request rqUpdateUser
+    When method put
+    Then status 404
