@@ -14,8 +14,16 @@ Feature: service user
     And request rqCreateUser
     When method post
     Then status 201
-    And match response == rsCreateUser
     And assert response.name == "Juan Felipe"
+
+  Scenario: response structure validation when creating a user
+
+    * def rqCreateUser = {"name": '#(name)',"job": '#(job)'}
+    * def rsCreateUser = read('rsCreateUser.json')
+    Given path 'api','users'
+    And request rqCreateUser
+    When method post
+    Then match response == rsCreateUser
 
 
   Scenario: Consult existing customer
