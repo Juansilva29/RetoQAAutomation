@@ -1,6 +1,7 @@
 package Backend;
 
 import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import com.intuit.karate.junit5.Karate;
 import com.intuit.karate.junit5.Karate.Test;
 import net.masterthought.cucumber.Configuration;
@@ -12,9 +13,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class user {
     @Test
+
+
     Karate testSample(){
         String path = "classpath:backend/";
          return Karate.run(path+"user.feature",
