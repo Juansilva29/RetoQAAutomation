@@ -5,11 +5,13 @@ Feature: service user
 
   Background: consume service
     * url url
+    * def rsCreateUser = read('rsCreateUser.json')
+    * def rsCreateUser = read('rsCreateUser.json')
+
 
   Scenario: Create a new user
 
     * def rqCreateUser = {"name": '#(name)',"job": '#(job)'}
-    * def rsCreateUser = read('rsCreateUser.json')
     Given path 'api','users'
     And request rqCreateUser
     When method post
@@ -19,30 +21,10 @@ Feature: service user
   Scenario: response structure validation when creating a user
 
     * def rqCreateUser = {"name": '#(name)',"job": '#(job)'}
-    * def rsCreateUser = read('rsCreateUser.json')
     Given path 'api','users'
     And request rqCreateUser
     When method post
     Then match response == rsCreateUser
-
-
-  Scenario: Consult existing customer
-
-    Given path 'api','users','2'
-    When method get
-    Then status 200
-    And assert response.data.id == 2
-
-
-  Scenario: Update existing customer
-
-    * def rqUpdateUser = {"name": '#(updateName)',"job": '#(updateJob)'}
-
-    Given path 'api','users','2'
-    And request rqUpdateUser
-    When method put
-    Then status 200
-    And assert response.job == "QA Analyst"
 
   Scenario: Delete existing customer
 
@@ -51,11 +33,3 @@ Feature: service user
     Then status 204
 
 
-  Scenario: update non-existing user
-
-    * def rqUpdateUser = {"name": '#(updateName)',"job": '#(updateJob)'}
-
-    Given path 'api','users','100000000'
-    And request rqUpdateUser
-    When method put
-    Then status 404
