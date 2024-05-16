@@ -5,13 +5,12 @@ Feature: service user
 
   Background: consume service
     * url url
-    * def rsCreateUser = read('rsCreateUser.json')
+    * def rqCreateUser = {"name": '#(name)',"job": '#(job)'}
     * def rsCreateUser = read('rsCreateUser.json')
 
 
   Scenario: Create a new user
 
-    * def rqCreateUser = {"name": '#(name)',"job": '#(job)'}
     Given path 'api','users'
     And request rqCreateUser
     When method post
@@ -20,7 +19,6 @@ Feature: service user
 
   Scenario: response structure validation when creating a user
 
-    * def rqCreateUser = {"name": '#(name)',"job": '#(job)'}
     Given path 'api','users'
     And request rqCreateUser
     When method post

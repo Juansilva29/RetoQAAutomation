@@ -19,32 +19,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class user {
 
     String path = "classpath:backend/";
-    /*@Test
-    void testParallel(){
-        Results results =  Runner.path("classpath:backend").outputCucumberJson(true).tags("~@ignore").parallel(1);
-        generateReport(results.getReportDir());
-    }*/
 
     @Test
     Karate testSample(){
         String path = "classpath:backend/";
-         return Karate.run(path+"user.feature",
+         return Karate.run(/*path+"user.feature",
                 path+"updateUser.feature",
-                path+"queryUser.feature"
-        ).relativeTo(getClass()).outputCucumberJson(true);
+                path+"queryUser.feature",*/
+                 path+"scenarioOutline.feature"
+        ).relativeTo(getClass());
+     }
 
-        //generateReport(results.getReportDir());
-        }
-     
-
-
-    public static void generateReport(String karateOutputPath){
-        Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[]{"json"}, true);
-        List<String> jsonPaths = new ArrayList<>(jsonFiles.size());
-        jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
-        Configuration config = new Configuration(new File("build"), "RetoQAAutomation");
-        ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
-        reportBuilder.generateReports();
-    }
 
 }
