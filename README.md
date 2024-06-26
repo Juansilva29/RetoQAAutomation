@@ -1,17 +1,15 @@
-Se Automatizan varias API tipos REST para verificar y validar el correcto funcionamiento de las tareas asignadas al servicio; se validara apis de tipos get,post,put,delete.
+Several REST type APIs are automated to verify and validate the correct functioning of the tasks assigned to the service; get,post,put,delete type APIs will be validated.
 
-**Consumo del servicio**
+Consumption of the service
 
-La url base para consumir el servicio es: https://reqres.in/; dependiendo la ejecución del servicio que se desea realizar cambia el enpoint Consultar usuario= "/api/user/2"; Consultar todos los usuarios = "api/unknown"; Crear usuario = "api/users"; Actualizar Usuario= /api/users/2; Eliminar Usuario= /api/users/2
+The base url to consume the service is: https://reqres.in/; depending on the execution of the service to be performed, the enpoint changes Consult user= "/api/user/2"; Consult all users = "api/unknown"; Create user = "api/users"; Update User= /api/users/2; Delete User= /api/users/2
 
-
-**Request para cada modulos**
+Request for each module
 
 GET https://reqres.in/api/users/2
 
-POST https://reqres.in/api/users - {"name":"Andres","job":"Tester"}
+POST https://reqres.in/api/users - {"name": "Andres", "job": "Tester"}
 
-PUT https://reqres.in/api/users/2 - {"name":"Andres Mieles","job":"QA Analyst"}
+PUT https://reqres.in/api/users/2 - {"name": "Andres Mieles", "job": "QA Analyst"}
 
 DELETE https://reqres.in/api/users/2
-
